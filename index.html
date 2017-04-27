@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genetics</title>
+</head>
+<body>
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="fractals.js"></script>
+    <div ng-app="Fractals">
+        <div ng-controller="FractalsCtrl">
+            <canvas ng-click="addPoint($event)" id="canvas" width="600" height="400" style="border: 1px solid gray"></canvas>
+            <div class="list-container">
+                <ul>
+                    <li ng-repeat="point in points">({{point.x}}, {{point.y}}) <button ng-click="removePoint($index)" ng-disabled="running">X</button></li>
+                </ul>
+            </div>
+            <div>
+                <label>Iterations: <input type="number" ng-model="iterations" ng-disabled="running"></label>
+            </div>
+            <div>
+                <label>Delay: <input type="number" ng-model="delay" ng-disabled="running"></label>
+            </div>
+            <button ng-click="buildFractal()" ng-disabled="running">Update And Run</button>
+        </div>
+    </div>
+</body>
